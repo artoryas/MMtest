@@ -17,6 +17,9 @@
 body{
     background-color: #101010;
     height: 100vh;
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+    height: -webkit-fill-available;
     display: flex;
     overflow: hidden;
 }
@@ -270,9 +273,6 @@ section{
     .contacts__info, .description{
         font-size: 1.5rem;
         margin-bottom: 70px;
-    }
-    _::-webkit-full-page-media, _:future, :root body {
-        padding-bottom: 80px; 
     }
 }
 @media screen and (max-width: 414px) {
