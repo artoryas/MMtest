@@ -153,7 +153,7 @@ const init = () => {
             mainPage.style.opacity = 1;
             navigation.style.opacity = 1;
         },600);
-    }, 0)
+    }, 3000)
 }
 init();
 
