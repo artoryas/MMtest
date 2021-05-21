@@ -271,6 +271,9 @@ section{
         font-size: 1.5rem;
         margin-bottom: 70px;
     }
+    _::-webkit-full-page-media, _:future, :root main {
+        padding-bottom: 65px; 
+    }
 }
 @media screen and (max-width: 414px) {
     html{
