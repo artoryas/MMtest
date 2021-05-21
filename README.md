@@ -13,7 +13,7 @@ Can be tested at https://mmwebsite.netlify.app/
 ## Implementations
 * Mobile friendly
 * Swipeable slider on mobile devices
-* Go through slides using arrow keys
+* Go through slides using arrow keys on your keyboard
 
 No frameworks were used
 
