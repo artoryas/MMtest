@@ -153,7 +153,7 @@ const init = () => {
             mainPage.style.opacity = 1;
             navigation.style.opacity = 1;
         },600);
-    }, 5000)
+    }, 0)
 }
 init();
 
@@ -222,12 +222,4 @@ document.addEventListener('keyup', (e) => {
     } else if (e.code === "ArrowLeft") {
         if (!isFirstPage()) setPrevSlide();
     }
-});
-
-let vh = window.innerHeight * 0.01;
-document.documentElement.style.setProperty('--vh', `${vh}px`);
-
-window.addEventListener('resize', () => {
-  let vh = window.innerHeight * 0.01;
-  document.documentElement.style.setProperty('--vh', `${vh}px`);
 });
