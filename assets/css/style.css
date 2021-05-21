@@ -13,11 +13,12 @@
     padding: 0;
     font-family: Klavika-light;
 }
-
+html{
+    height: calc(100vh - calc(100vh - 100%))
+}
 body{
     background-color: #101010;
-    height: 100vh;
-    height: -webkit-fill-available;
+    height: 100%;
     display: flex;
     overflow: hidden;
 }
