@@ -1,0 +1,125 @@
+.loader{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #101010;
+    z-index: 1;
+    opacity: 1;
+    transition: .5s ease-out;
+}
+.loader__wrapper{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    transition: .1s ease-out;
+}
+    .loader__fog{
+        position: absolute;
+        top: 45%;
+        left: 50%;
+        z-index: 1;
+        animation: fog_movement 4s linear infinite;
+    }
+        @keyframes fog_movement {
+            0%{
+                opacity: 0;
+                transform: translate(-30%, -50%);
+            }
+            20%, 80%{
+                opacity: 0.8;
+            }
+            50%{
+                opacity: 1;
+            }
+            100%{
+                opacity: 0;
+                transform: translate(-70%, -50%);
+            }
+        }
+    .loader__monk{
+        z-index: 3;
+        animation: monk_animation 1s ease-in-out, floating 2s ease 1s infinite;
+        width: 80px;
+    }
+        @keyframes monk_animation{
+            0%{
+                transform: scale(.1) translateY(150%)
+            }
+            40%{
+                transform: scale(1) translateY(-10px);
+            }
+            50%{
+                transform: translateY(-15px);
+            }
+            70%{
+                transform: translateY(0px);
+            }
+            100%{
+                transform: translateY(-10%);
+            }
+        }
+        @keyframes floating {
+            0%, 100% {
+                transform: translateY(-10%);
+            }
+            50%{
+                transform: translateY(0);
+            }
+        }
+    .loader__text{
+        opacity: 0;
+        transform: scale(.3);
+        position: relative;
+        color: white;
+        margin-top: 2rem;
+        position: relative;
+        z-index: 2;
+        display: flex;
+        font-size: 1.2rem;
+        font-style: italic;
+        animation: bounce-in 1s ease .5s forwards, move-left .1s ease-out 1.5s forwards;
+    }
+        @keyframes bounce-in {
+            20% {
+                opacity: 1;
+                transform: scale(1.2);
+            }
+            40% { 
+                transform: scale(.9); 
+            }
+            50%, 100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        @keyframes move-left {
+            from {
+                transform: translateX(0%);
+            }
+            to{
+                transform: translateX(-100%);
+            }
+        }
+    .loader__extra{
+        width: 200px;
+        position: absolute;
+        top: 0;
+        right: 0px;
+        opacity: 0;
+        animation: slide-right .2s linear 1.5s forwards;
+    }
+        @keyframes slide-right {
+            80%{
+                opacity: .1;
+            }
+            100% { 
+                right: -200px;
+                opacity: 1;
+            }
+        }
