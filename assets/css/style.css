@@ -181,18 +181,20 @@ section{
                 height: 75px;
             }
 .contacts{
-    transition: 1s ease-in-out;
+    display: none;
+    transition: 0.5s ease-in-out;
+    transition-delay: 0.5s;
     width: 30%;
     height: 100%;
     position: absolute;
     right: 0;
     top: 0;
-    transform: translate(100%, 0);
+    opacity: 0;
     color: white;
     padding-top: 1rem;
     padding-right: 2rem;
     text-align: right;
-}
+}   
     .contacts__info{
         margin-top: 50%;
         font-size: 1rem;

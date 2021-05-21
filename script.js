@@ -18,14 +18,22 @@ navButtons.forEach(navButton => navButton.addEventListener('click', (item) => {
 }));
 
 nextArrow.addEventListener('click', () => {
-    currentSection++;
-    handlePositionChange();
+    setNextSlide();
 });
 
+const setNextSlide = () => {
+    currentSection++;
+    handlePositionChange();
+}
+
 prevArrow.addEventListener('click', () => {
+    setPrevSlide();
+})
+
+const setPrevSlide = () => {
     currentSection--;
     handlePositionChange();
-})
+}
 
 const handlePositionChange = () => {
     mainPage.style.backgroundPosition = `${getPosition()}%`;
@@ -99,12 +107,21 @@ const addRemoveNavArrows = () => {
 
 const openContacts = () => {
     mainPage.style.transform = 'translate(-70%, 0)';
-    contacts.style.transform = 'translate(0, 0)';
+    contacts.style.display = 'block';
+    contacts.style.transitionDelay = '0.5s';
+    setTimeout(() => {
+        contacts.style.opacity = 1;
+    }, 50);
 }
 
 const closeContacts = () => {
     mainPage.style.transform = 'translate(0, 0)';
-    contacts.style.transform = 'translate(100%, 0)';
+    contacts.style.opacity = 0;
+    contacts.style.transitionDelay = '0s';
+    setTimeout(() => {
+        contacts.style.display = 'none';
+        
+    }, 500);
 }
 
 const isLastPage = () => {
@@ -156,3 +173,53 @@ init();
 //             navigation.style.opacity = 1;
 //         },50);
 // })
+
+// Swipe Detection
+mainPage.addEventListener("touchstart", startTouch, false);
+mainPage.addEventListener("touchmove", moveTouch, false);
+
+var initialX = null;
+var initialY = null;
+
+function startTouch(e) {
+    initialX = e.touches[0].clientX;
+    initialY = e.touches[0].clientY;
+};
+
+function moveTouch(e) {
+    if (initialX === null) {
+        return;
+    }
+
+    if (initialY === null) {
+        return;
+    }
+
+    var currentX = e.touches[0].clientX;
+    var currentY = e.touches[0].clientY;
+
+    var diffX = initialX - currentX;
+    var diffY = initialY - currentY;
+
+    if (Math.abs(diffX) > Math.abs(diffY)) {
+      if (diffX > 0) {
+        if (!isLastPage()) setNextSlide();
+      } else {
+        if (!isFirstPage()) setPrevSlide();
+      }  
+    }
+
+    initialX = null;
+    initialY = null;
+
+    e.preventDefault();
+  };
+
+// Keyboard events
+document.addEventListener('keyup', (e) => {
+    if (e.code === "ArrowRight") {
+        if (!isLastPage()) setNextSlide();
+    } else if (e.code === "ArrowLeft") {
+        if (!isFirstPage()) setPrevSlide();
+    }
+});
